@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Rama Ramadhan</title>
+    <!-- Mengambil Font Modern dari Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Variabel Warna Tema Ungu */
+        :root {
+            --primary-purple: #6b21a8;      /* Ungu Tua Elegan */
+            --secondary-purple: #9333ea;    /* Ungu Cerah */
+            --light-purple: #f3e8ff;        /* Ungu Sangat Muda (Background) */
+            --accent-purple: #d8b4fe;       /* Ungu Pastel (Border/Badge) */
+            --dark-text: #1f2937;
+            --muted-text: #4b5563;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-purple);
+            color: var(--dark-text);
+            line-height: 1.6;
+            padding: 30px 15px;
+        }
+
+        /* Container Utama CV */
+        .cv-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(107, 33, 168, 0.15);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+        }
+
+        /* Bagian Kiri (Sidebar Ungu) */
+        .sidebar {
+            background: linear-gradient(160deg, var(--primary-purple), var(--secondary-purple));
+            color: var(--white);
+            padding: 40px 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .profile-header {
+            text-align: center;
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: var(--light-purple);
+            color: var(--primary-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin: 0 auto 15px;
+            border: 4px solid var(--accent-purple);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        .profile-header .tagline {
+            font-size: 0.85rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        .sidebar-section h2 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            border-bottom: 2px solid var(--accent-purple);
+            padding-bottom: 6px;
+            margin-bottom: 14px;
+            font-weight: 600;
+        }
+
+        .info-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 0.88rem;
+        }
+
+        .info-list li strong {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--accent-purple);
+            letter-spacing: 0.5px;
+        }
+
+        .social-links a {
+            color: var(--white);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            transition: background 0.3s;
+            margin-bottom: 8px;
+            width: 100%;
+        }
+
+        .social-links a:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .hobby-badge {
+            display: inline-block;
+            background: var(--white);
+            color: var(--primary-purple);
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* Bagian Kanan (Konten Utama) */
+        .main-content {
+            padding: 40px 35px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            color: var(--primary-purple);
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::after {
+            content: "";
+            flex: 1;
+            height: 2px;
+            background: var(--light-purple);
+        }
+
+        .about-text {
+            color: var(--muted-text);
+            font-size: 0.93rem;
+            text-align: justify;
+        }
+
+        /* Timeline Pendidikan & Pengalaman */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 20px;
+            margin-left: 6px;
+        }
+
+        .timeline-item {
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -28px;
+            top: 5px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: var(--secondary-purple);
+            border: 3px solid var(--light-purple);
+        }
+
+        .timeline-item h3 {
+            font-size: 1.05rem;
+            color: var(--dark-text);
+            font-weight: 600;
+        }
+
+        .timeline-date {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary-purple);
+            background: var(--light-purple);
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin: 4px 0 8px;
+        }
+
+        .timeline-item p {
+            font-size: 0.88rem;
+            color: var(--muted-text);
+        }
+
+        /* Keahlian (Skills) */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-card {
+            background: var(--light-purple);
+            border-left: 4px solid var(--secondary-purple);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .skill-card h4 {
+            color: var(--primary-purple);
+            font-size: 0.98rem;
+            margin-bottom: 5px;
+        }
+
+        .skill-card p {
+            font-size: 0.83rem;
+            color: var(--muted-text);
+        }
+
+        /* Progress Bar Dummy untuk Visualisasi Skill */
+        .skill-bar {
+            width: 100%;
+            height: 6px;
+            background: var(--accent-purple);
+            border-radius: 4px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            height: 100%;
+            background: var(--primary-purple);
+            border-radius: 4px;
+        }
+
+        /* Footer untuk GitHub */
+        .cv-footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: var(--primary-purple);
+        }
+
+        /* Responsif untuk Layar HP */
+        @media (max-width: 768px) {
+            .cv-container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                padding: 30px 20px;
+            }
+            .main-content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cv-container">
+        <!-- BAGIAN SIDEBAR KIRI -->
+        <aside class="sidebar">
+            <div class="profile-header">
+                <!-- Inisial Nama sebagai Avatar Dummy -->
+                <div class="profile-avatar">RR</div>
+                <h1>Rama Ramadhan</h1>
+                <span class="tagline">Pro Gamer & Logistics Staff</span>
+            </div>
+
+            <!-- Data Diri -->
+            <div class="sidebar-section">
+                <h2>Data Diri</h2>
+                <ul class="info-list">
+                    <li>
+                        <strong>Tempat, Tanggal Lahir</strong>
+                        16 September 2001
+                    </li>
+                    <li>
+                        <strong>Nomor Telepon / WA</strong>
+                        082112676707
+                    </li>
+                    <li>
+                        <strong>Alamat</strong>
+                        Kp. Babakan Sangkuriang RT 03 / RW 01
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Media Sosial -->
+            <div class="sidebar-section">
+                <h2>Media Sosial</h2>
+                <div class="social-links">
+                    <a href="https://instagram.com/sagonyell2" target="_blank">
+                        📸 Instagram: @sagonyell2
+                    </a>
+                    <a href="https://tiktok.com/@sagonyell2" target="_blank">
+                        🎵 TikTok: @sagonyell2
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hobi -->
+            <div class="sidebar-section">
+                <h2>Hobi & Minat</h2>
+                <div>
+                    <span class="hobby-badge">🏃‍♂️ Berolahraga</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- BAGIAN KONTEN UTAMA KANAN -->
+        <main class="main-content">
+            <!-- Tentang Saya (Dummy Deskripsi Profesional) -->
+            <section>
+                <h2 class="section-title">Tentang Saya</h2>
+                <p class="about-text">
+                    Individu yang disiplin, cekatan, dan berorientasi pada target dengan ketelitian tinggi dalam operasional logistik penyortiran paket. Memiliki kemampuan analisis cepat, koordinasi tim yang solid, serta ketahanan fokus tinggi yang diasah melalui dunia kompetitif <em>Pro Gaming</em>.
+                </p>
+            </section>
+
+            <!-- Pengalaman Kerja -->
+            <section>
+                <h2 class="section-title">Pengalaman</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>Penyortiran Paket (Package Sorter)</h3>
+                        <span class="timeline-date">Logistik & Ekspedisi</span>
+                        <p>
+                            • Melakukan pemilahan dan penyortiran paket berdasarkan kode wilayah dan rute pengiriman dengan kecepatan serta akurasi tinggi.<br>
+                            • Memastikan kondisi fisik paket aman, memeriksa label resi, serta menjaga kelancaran alur distribusi gudang.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Riwayat Pendidikan -->
+            <section>
+                <h2 class="section-title">Riwayat Pendidikan</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>SMA KP Baleendah</h3>
+                        <span class="timeline-date">Lulus Tahun 2027</span>
+                        <p>Pendidikan Menengah Atas</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>SMP Ziedey</h3>
+                        <span class="timeline-date">Lulus Tahun 2024</span>
+                        <p>Pendidikan Menengah Pertama</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>SD Pasawahan 08</h3>
+                        <span class="timeline-date">Lulus Tahun 2021</span>
+                        <p>Pendidikan Sekolah Dasar</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Keahlian -->
+            <section>
+                <h2 class="section-title">Keahlian</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h4>🎮 Pro Gaming (Kompetitif)</h4>
+                        <p>Strategi tim, refleks cepat, pengambilan keputusan di bawah tekanan, dan fokus tinggi.</p>
+                        <div class="skill-bar">
+                            <div class="skill-fill" style="width: 95%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <h4>📦 Manajemen & Sortir Paket</h4>
+                        <p>Ketelitian kode rute, kecepatan pemilahan barang, dan ketahanan fisik kerja.</p>
+                        <div class="skill-bar">
+                            <div class="skill-fill" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="cv-footer">
+        &copy; 2026 Rama Ramadhan • Dibuat untuk Portofolio GitHub Pages
+    </footer>
+
+</body>
+</html>
